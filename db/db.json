@@ -1,0 +1,66 @@
+{
+  "users": [
+    {
+      "name": "Taqui",
+      "email": "taqui@test.com",
+      "password": "taqui123",
+      "id": 1
+    },
+    {
+      "name": "Gouse",
+      "email": "gouse@test.com",
+      "password": "gouse123",
+      "id": 2
+    },
+    {
+      "email": "azeez@test.com",
+      "password": "azeez123",
+      "name": "azeez",
+      "id": 3
+    },
+    {
+      "email": "abc@test.com",
+      "password": "abc123",
+      "name": "Abc",
+      "id": 4
+    },
+    {
+      "email": "cde@test.com",
+      "password": "cde123",
+      "name": "cde",
+      "id": 5
+    },
+    {
+      "email": "bbq@test.com",
+      "password": "bbq123",
+      "name": "BBQ",
+      "id": 6
+    }
+  ],
+  "restaurants": [
+    {
+      "name": "Hi-tech Bawarchi",
+      "address": "Madhapur, Hyderabad",
+      "contact": "2222222222",
+      "id": 2
+    },
+    {
+      "name": "Yes Bawarchi",
+      "address": "High-way, Shamshabad",
+      "contact": "3333333333",
+      "id": 3
+    },
+    {
+      "name": "Green Bawarchi",
+      "address": "Attapur,Hyderabad",
+      "contact": "6666666666",
+      "id": 4
+    },
+    {
+      "name": "Lake King",
+      "address": "boida",
+      "contact": "4444444444",
+      "id": 5
+    }
+  ]
+}
