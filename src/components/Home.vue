@@ -4,7 +4,7 @@
     <div class="h1tag">
       <h1>Hi! {{ name }}, welcome on Home Page</h1>
     </div>
-    <h1>Restaurant List</h1>
+  
    
     <sort-list v-if="restaurant" :restaurant="restaurant" :deleteRestaurant="deleteRestaurant"/>
   </div>

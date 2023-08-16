@@ -1,44 +1,45 @@
 <template>
   <div>
+      <h1 @click="refresh()">Restaurant List</h1>
     <table>
       <thead>
         <tr>
-         <th v-for="header in tableHeaders" :key="header">
-  <div @click="handleHeaderClick(header)" :style="{ backgroundColor: columnColor[`column${header}`] }">
-    <div v-if="header !== 'contact'">
-      {{ header }}
-      <span v-if="sortedField === header">{{ sortDirection === 'asc' ? '↑' : '↓' }}</span>
-    </div>
-    <div v-if="header === 'contact'">
-    {{ header }}
-    <span
-        @click="handleHeaderClick(header)"
-        :style="{ backgroundColor: columnColor[`column${header}`] }"
-        v-if="sortedField === header"
-    >
-        {{ sortDirection === 'asc' ? '↑' : '↓' }}
-    </span>
-    <span @click.stop="toggleMaskContact" style="cursor: pointer;">
-        <i class="fa" :class="showMaskedContact ? 'fa-eye-slash' : 'fa-eye'" aria-hidden="true"></i>
-    </span>
-</div>
-  </div>
-</th><th>Action</th>
-
+          <th v-for="header in tableHeaders" :key="header">
+            <div @click="handleHeaderClick(header)" :style="{ backgroundColor: columnColor[`column${header}`] }">
+              <div v-if="header !== 'contact'">
+                {{ header }}
+                <span v-if="sortedField === header">{{ sortDirection === 'asc' ? '↑' : '↓' }}</span>
+              </div>
+              <div v-if="header === 'contact'">
+                {{ header }}
+                <span @click="handleHeaderClick(header)" :style="{ backgroundColor: columnColor[`column${header}`] }"
+                  v-if="sortedField === header">
+                  {{ sortDirection === 'asc' ? '↑' : '↓' }}
+                </span>
+                <span @click.stop="toggleMaskContact" style="cursor: pointer;">
+                  <i class="fa" :class="showMaskedContact ? 'fa-eye-slash' : 'fa-eye'" aria-hidden="true"></i>
+                </span>
+              </div>
+            </div>
+          </th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="(data, index) in sortedData" :key="index">
           <td v-for="header in tableHeaders" :key="header"
-              :style="{ backgroundColor: columnColor[`column${header}`] }">
+            :style="{ backgroundColor: columnColor[`column${header}`] }">
             {{ header === 'contact' ? maskContact(data[header]) : data[header] }}
           </td>
-          <td><router-link :to="'/update/'+data.id" class="icon-button">
-              <i class="fas fa-pencil-alt" ></i></router-link><span> or </span>
-         <button v-on:click="deleteRestaurant(data.id)" class="icon-button">
+          <td>
+            <router-link :to="'/update/' + data.id" class="icon-button">
+              <i class="fas fa-pencil-alt"></i>
+            </router-link>
+            <span> or </span>
+            <button @click="confirmDelete(data.id)" class="icon-button">
               <i class="fas fa-trash"></i>
-</button>
-         </td>
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -60,7 +61,7 @@ export default {
       sortDirection: 'asc',
       prevCol: '',
       columnColor: {},
-      showMaskedContact: false,
+      showMaskedContact: true,
     };
   },
   computed: {
@@ -86,6 +87,13 @@ export default {
     }
   },
   methods: {
+    refresh() {
+      this.sortedField = null;
+      this.sortDirection = 'asc';
+      this.columnColor = {};
+      this.prevCol = '';
+      this.showMaskedContact = true;
+    },
     maskContact(contact) {
       if (this.showMaskedContact) {
         const visibleChars = 4;
@@ -109,7 +117,7 @@ export default {
         [`column${columnName}`]: '#3498db'
       };
       this.prevCol = `column${columnName}`;
-      
+
       // Update sortedField and sortDirection
       this.sortedField = columnName;
       this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
@@ -126,7 +134,5 @@ export default {
 
 <style>
 
-
-  
 </style>
 
