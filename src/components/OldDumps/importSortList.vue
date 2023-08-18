@@ -1,25 +1,20 @@
 <template>
   <div>
       <h1 @click="refresh()">Restaurant List</h1>
-      <h1>{{selectedOptions}}</h1>
-      
-       <label class="checkbox-option" v-for="(header, index) in tableHeaders" :key="index">
-      <input type="checkbox" v-model="optionChecked[header]" /> {{ header }}
-    </label>
     <table>
       <thead>
         <tr>
           <th v-for="header in tableHeaders" :key="header">
             <div @click="handleHeaderClick(header)" :style="{ backgroundColor: columnColor[`column${header}`] }">
               <div v-if="header !== 'contact'">
-                {{ header }}<span v-if="sortedField !== header" class="clickSort">⧋</span>
-                <span v-if="sortedField === header">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
+                {{ header }}
+                <span v-if="sortedField === header">{{ sortDirection === 'asc' ? '↑' : '↓' }}</span>
               </div>
               <div v-if="header === 'contact'">
-                {{ header }}<span v-if="sortedField !== header" class="clickSort">⧋</span>
+                {{ header }}
                 <span @click="handleHeaderClick(header)" :style="{ backgroundColor: columnColor[`column${header}`] }"
                   v-if="sortedField === header">
-                  {{ sortDirection === 'asc' ? '▲' : '▼' }}
+                  {{ sortDirection === 'asc' ? '↑' : '↓' }}
                 </span>
                 <span @click.stop="toggleMaskContact" style="cursor: pointer;">
                   <i class="fa" :class="showMaskedContact ? 'fa-eye-slash' : 'fa-eye'" aria-hidden="true"></i>
@@ -49,10 +44,13 @@
       </tbody>
     </table>
   </div>
+  <import-export @imported-data="updateRestaurantData"></import-export>
 </template>
 <script>
-
-export default {
+import ImportExport from './ImportExport.vue';
+export default {components: {
+    ImportExport,
+  },
   props: {
     restaurant: {
       type: Object,
@@ -62,24 +60,14 @@ export default {
   },
   data() {
     return {
-      optionChecked: {},
-
-      sortedField: 'id',
+      sortedField: null,
       sortDirection: 'asc',
       prevCol: '',
       columnColor: {},
       showMaskedContact: true,
     };
   },
-  created() {
-     this.tableHeaders.forEach(header => {
-      this.optionChecked[header] = true; // You can set this to false if you want them unchecked by default
-    });
-  },
   computed: {
-    selectedOptions() {
-      return this.tableHeaders.filter(header => this.optionChecked[header]);
-    },
     sortedData() {
       return [...this.restaurant].sort((a, b) => {
         const aValue = a[this.sortedField];
@@ -102,6 +90,14 @@ export default {
     }
   },
   methods: {
+    updateRestaurantData(importedData) {
+    this.restaurant = importedData;
+  },
+   handleImportedData(importedData) {
+  if (importedData) {
+    this.$emit('imported-data', importedData);
+  }
+},
     refresh() {
       this.sortedField = null;
       this.sortDirection = 'asc';
@@ -110,14 +106,13 @@ export default {
       this.showMaskedContact = true;
     },
     maskContact(contact) {
-  const contactString = String(contact); // Convert to string
-  if (this.showMaskedContact) {
-    const visibleChars = 4;
-    const maskedPart = '*'.repeat(contactString.length - visibleChars) + contactString.slice(-visibleChars);
-    return maskedPart;
-  }
-  return contactString;
-},
+      if (this.showMaskedContact) {
+        const visibleChars = 4;
+        const maskedPart = '*'.repeat(contact.length - visibleChars) + contact.slice(-visibleChars);
+        return maskedPart;
+      }
+      return contact;
+    },
     toggleMaskContact() {
       this.showMaskedContact = !this.showMaskedContact;
     },

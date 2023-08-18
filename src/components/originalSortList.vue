@@ -1,11 +1,6 @@
 <template>
   <div>
       <h1 @click="refresh()">Restaurant List</h1>
-      <h1>{{selectedOptions}}</h1>
-      
-       <label class="checkbox-option" v-for="(header, index) in tableHeaders" :key="index">
-      <input type="checkbox" v-model="optionChecked[header]" /> {{ header }}
-    </label>
     <table>
       <thead>
         <tr>
@@ -62,8 +57,6 @@ export default {
   },
   data() {
     return {
-      optionChecked: {},
-
       sortedField: 'id',
       sortDirection: 'asc',
       prevCol: '',
@@ -71,15 +64,7 @@ export default {
       showMaskedContact: true,
     };
   },
-  created() {
-     this.tableHeaders.forEach(header => {
-      this.optionChecked[header] = true; // You can set this to false if you want them unchecked by default
-    });
-  },
   computed: {
-    selectedOptions() {
-      return this.tableHeaders.filter(header => this.optionChecked[header]);
-    },
     sortedData() {
       return [...this.restaurant].sort((a, b) => {
         const aValue = a[this.sortedField];

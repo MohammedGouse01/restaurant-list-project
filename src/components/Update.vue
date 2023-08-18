@@ -37,7 +37,7 @@ export default {
          this.$refs.addressInput.focus()
       },
       async updateRestaurant(){
-         const result= await axios.put('http://localhost:3000/restaurants/'+this.$route.params.id,{
+         const result= await axios.put('http://localhost:3000/restaurant/'+this.$route.params.id,{
             name:this.restaurant.name,
             address:this.restaurant.address,
             contact:this.restaurant.contact,
@@ -57,7 +57,7 @@ export default {
         {
            this.$router.push({name:'SignUp'}).catch(() => {})
         }
-        const result= await axios.get('http://localhost:3000/restaurants/'+this.$route.params.id)
+        const result= await axios.get('http://localhost:3000/restaurant/'+this.$route.params.id)
         console.warn(result.data);
         this.restaurant = result.data
      },

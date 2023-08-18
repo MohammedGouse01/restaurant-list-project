@@ -1,0 +1,40 @@
+{
+  "restaurant": [
+    {
+      "id": 1,
+      "name": "Hi-tech ",
+      "address": "Madhapur, Hyderabad",
+      "contact": 44444444444
+    },
+    {
+      "id": 2,
+      "name": "Yes Bawarchi",
+      "address": "High-way, Shamshabad",
+      "contact": "3333333333"
+    },
+    {
+      "id": 3,
+      "name": "Green Bawarchi",
+      "address": "Attapur,Hyderabad",
+      "contact": "6666666666"
+    },
+    {
+      "id": 4,
+      "name": "Hi-tech ",
+      "address": "Madhapur, Hyderabad",
+      "contact": 44444444444
+    },
+    {
+      "id": 5,
+      "name": "Yes Bawarchi",
+      "address": "High-way, Shamshabad",
+      "contact": "3333333333"
+    },
+    {
+      "id": 6,
+      "name": "Green Bawarchi",
+      "address": "Attapur,Hyderabad",
+      "contact": "6666666666"
+    }
+  ]
+}

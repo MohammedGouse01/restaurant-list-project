@@ -25,7 +25,7 @@ export default {
          this.$refs.addressInput.focus()
       },
       async addRestaurant(){
-         const result= await axios.post('http://localhost:3000/restaurants',{
+         const result= await axios.post('http://localhost:3000/restaurant',{
             name:this.restaurant.name,
             address:this.restaurant.address,
             contact:this.restaurant.contact,
