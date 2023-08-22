@@ -112,7 +112,9 @@ export default {
 }
 
 .export-button {
+  margin-top: 12px;
   cursor: pointer;
+  
 }
 </style>
 

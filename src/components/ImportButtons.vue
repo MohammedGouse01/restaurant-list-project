@@ -68,6 +68,7 @@ async extractDataFromFile() {
       });
 
       this.dataList = dataArray;
+      console.warn(typeof dataArray)
       resolve();
     };
   });
@@ -81,31 +82,39 @@ async uploadData() {
   try {
     let i=0;
     for (const dataItem of this.dataList) {
-      const response = await axios.post("http://localhost:3000/restaurant", dataItem);
-      console.log("Data uploaded successfully:", response.data);
+    const response = await axios.post("http://localhost:3000/restaurant", dataItem);
+    console.log("Data uploaded successfully:", response.data);
       
       const lastIndex = this.dataList.length - 1
       if(lastIndex==i){
-        setTimeout(() => {
-          window.location.reload();
-        }, 1000);
-         const importedData = [...this.dataList]; // Make a copy
-    this.dataList = []; // Clear the dataList
-    this.columnNames = [];
-    this.fileInput = null;
-    this.$emit('imported-data', importedData); // Emit the copied data
+        this.handleImportClick()
       }
         i++;
       
     }
-
-   
     
     console.log("All data uploaded successfully!");
   } catch (error) {
     console.error("Error uploading data:", error);
   }
 },
+async handleImportClick() {
+      try {
+
+
+        setTimeout(() => {
+        const importedData = [...this.dataList];
+        this.dataList = []; // Clear the dataList
+        this.columnNames = [];
+        this.fileInput = null;
+        this.$emit('imported-data', importedData);
+        console.warn('this is emited')
+        }, 1000);
+
+      } catch (error) {
+        console.error('Error importing data:', error);
+      }
+    },
 
   async deleteAllItems() {
     try {

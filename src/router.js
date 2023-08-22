@@ -4,6 +4,7 @@ import { createRouter, createWebHistory} from 'vue-router'
 import Login from './components/Login.vue'
 import Add from './components/Add.vue'
 import Update from './components/Update.vue'
+import Menu from './components/Menu.vue'
 
 const routes=[
     {
@@ -27,6 +28,10 @@ const routes=[
         name:'Update',
         component: Update,
         path:'/update/:id'
+    },{
+        name:'Menu',
+        component: Menu,
+        path:'/menu/:id'
     },
 ];
 const router =createRouter({

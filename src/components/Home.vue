@@ -3,12 +3,14 @@
     <Header/>
     <div class="h1tag">
       <h1>Hi! {{ name }}, welcome on Home Page</h1>
+      
     </div>
-    <SortList v-if="restaurant.length > 0" :restaurant="restaurant" :deleteRestaurant="deleteRestaurant" @data-imported="handleDataImported" />
-   <div class="external">
+    <div class="external">
     <span><ExportButtons :data="restaurant" /></span> 
     <span><ImportButtons @imported-data="handleImportedData" /></span>
     </div>
+    <SortList v-if="restaurant.length > 0" :restaurant="restaurant" :deleteRestaurant="deleteRestaurant" @data-imported="handleDataImported" />
+   
   </div>
 </template>
 
@@ -37,11 +39,7 @@ export default {
     async handleDataImported(importedData) {
      try {
       if (importedData && Array.isArray(importedData)) {
-        // Clear the previous data and set the new data
         this.restaurant = [...importedData];
-
-        // Emit the event to trigger refresh in SortList component
-       window.location.reload();
       }
       
      } catch (error) {
@@ -77,6 +75,9 @@ export default {
 
 
 <style>
+.external{
+  display: flexbox;
+}
 td{
    width:160px;
    height: 40px;
@@ -91,8 +92,12 @@ td{
     padding: 0;
     padding-left: 1rem;
     padding-right: 1rem;  }
-
+    .external{
+      display: flex;
+      justify-content: flex-end
+    }
     .external span{
-      display: inline-flexbox;
+      display: inline-flex;
+      justify-content: flex-end
     }
 </style>

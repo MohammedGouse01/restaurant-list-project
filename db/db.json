@@ -35,23 +35,89 @@
       "password": "bbq123",
       "name": "BBQ",
       "id": 6
+    },
+    {
+      "email": "mujtaba@gmail.com",
+      "password": "mujtaba123",
+      "name": "Mujtaba",
+      "id": 7
+    },
+    {
+      "email": "bro@test.com",
+      "password": "bro123",
+      "name": "bro",
+      "id": 8
     }
   ],
   "restaurant": [
     {
       "id": 1,
-      "name": "Hi-tech ",
+      "name": "Hi-tech",
       "address": "Madhapur, Hyderabad",
       "contact": 44444444444
     },
     {
       "id": 2,
+      "name": "Yes yes Bawarchi",
+      "address": "High-way, Shamshabad",
+      "contact": 555555
+    },
+    {
+      "id": 3,
+      "name": "Green Bawarchi",
+      "address": "Attapur,Hyderabad",
+      "contact": "6666666666"
+    },
+    {
+      "id": 4,
+      "name": "Hi-tech ",
+      "address": "Madhaptrdtdtur, Hyderabad",
+      "contact": 44444444444
+    },
+    {
+      "id": 5,
       "name": "Yes Bawarchi",
       "address": "High-way, Shamshabad",
       "contact": "3333333333"
     },
     {
-      "id": 3,
+      "id": 6,
+      "name": "Green Bawarchi",
+      "address": "Attapur,Hyderabad",
+      "contact": "6666666666"
+    },
+    {
+      "id": 7,
+      "name": "Hi-tech ",
+      "address": "Madhapur, Hyderabad",
+      "contact": 44444444444
+    },
+    {
+      "id": 8,
+      "name": "Yes Bawarchi",
+      "address": "High-way, Shamshabad",
+      "contact": "3333333333"
+    },
+    {
+      "id": 9,
+      "name": "Green Green Bawarchi",
+      "address": "Attapur,Hyderabad",
+      "contact": "6666666666"
+    },
+    {
+      "id": 10,
+      "name": "Hi-tech ",
+      "address": "Madhapur, Hyderabad",
+      "contact": 44444444444
+    },
+    {
+      "id": 11,
+      "name": "Yes Bawarchi",
+      "address": "High-way, Shamshabad",
+      "contact": "3333333333"
+    },
+    {
+      "id": 12,
       "name": "Green Bawarchi",
       "address": "Attapur,Hyderabad",
       "contact": "6666666666"
